@@ -98,6 +98,27 @@ if($('[data-enhanced-select]').length > 0){
 }
 
 // =====================================================
+// Handle the IHT progressive disclosure open/close functionality
+// =====================================================
+ $("#getHelpDisclosure").one("click", function() {
+    console.log("in here but ajax not working");
+        $.ajax({url: reportProblemAjaxUrl, success: function(result){
+        console.log("extra check");
+             $("#getHelpForm").html(result);
+          }});
+    });
+
+
+ $(".report-error__toggle").on("click", function(e) {
+    if (document.getElementById("getHelpDisclosure").open) {
+            document.getElementById("getHelpDisclosure").open = false;
+     }else{
+            document.getElementById("getHelpDisclosure").open = true;
+         }
+     });
+
+// =====================================================
+
 // Submit trigger
 // Used on Gifts section
 // Should be replaced by links without the POST through

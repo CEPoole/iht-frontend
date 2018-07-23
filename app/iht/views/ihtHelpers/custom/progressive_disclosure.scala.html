@@ -14,6 +14,7 @@
  * limitations under the License.
  *@
 
+<<<<<<< HEAD
 @(summary: String, content: Seq[String])
 
 <details class="contact-details-help">
@@ -24,3 +25,36 @@
         }
     </div>
 </details>
+=======
+@import iht.utils.ProgressiveDisclosureHelper._
+@import iht.config.ApplicationConfig
+@import views.html.helper._
+@(location: String)(implicit request:Request[_], messages: Messages)
+
+<script type="text/javascript">var reportProblemAjaxUrl = "@{Html(ApplicationConfig.reportAProblemPartialUrl)}"</script>
+
+<details id="getHelpDisclosure" class="u-mt--3 u--no-print form-group column-two-thirds">
+    <summary><a class="report-error__toggle" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a></summary>
+
+     <p class="panel-indent">
+            @if(getDisclosureInfo(location)._2.nonEmpty){
+                <div class="form-group">
+                    @for(msg <- getDisclosureInfo(location)._2){
+                        @if(msg.contains("link")){
+                            <a href = "@iht.controllers.estateReports.routes.YourEstateReportsController.onPageLoad()"> @messages(msg)</a>
+                        }else{
+                            @messages(msg)
+                        }
+                    }
+                </div>
+            }
+
+         <div id="getHelpForm"></div>
+
+         <p>@{play.filters.csrf.CSRF.getToken(request).map {token => CSRF.formField(request)}}</p>
+
+        <div class="form-group">
+            @messages(getDisclosureInfo(location)._1)
+        </div>
+</details>
+>>>>>>> fixed bug for when no js is available.
