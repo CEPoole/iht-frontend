@@ -14,18 +14,6 @@
  * limitations under the License.
  *@
 
-<<<<<<< HEAD
-@(summary: String, content: Seq[String])
-
-<details class="contact-details-help">
-    <summary><span class="summary">@summary</span></summary>
-    <div class="panel panel-border-narrow">
-        @for(paragraph <- content){
-            <p>@paragraph</p>
-        }
-    </div>
-</details>
-=======
 @import iht.utils.ProgressiveDisclosureHelper._
 @import iht.config.ApplicationConfig
 @import views.html.helper._
@@ -35,8 +23,7 @@
 
 <details id="getHelpDisclosure" class="u-mt--3 u--no-print form-group column-two-thirds">
     <summary><a class="report-error__toggle" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a></summary>
-
-     <p class="panel-indent">
+    <div class="panel-indent">
             @if(getDisclosureInfo(location)._2.nonEmpty){
                 <div class="form-group">
                     @for(msg <- getDisclosureInfo(location)._2){
@@ -49,12 +36,13 @@
                 </div>
             }
 
-         <div id="getHelpForm"></div>
-
-         <p>@{play.filters.csrf.CSRF.getToken(request).map {token => CSRF.formField(request)}}</p>
+        <div id="report-error-partial-form" class="report-error__content hidden">
+            <div class="report-error__loading"></div>
+        </div>
 
         <div class="form-group">
             @messages(getDisclosureInfo(location)._1)
         </div>
+    </div>
+
 </details>
->>>>>>> fixed bug for when no js is available.

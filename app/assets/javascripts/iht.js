@@ -101,10 +101,7 @@ if($('[data-enhanced-select]').length > 0){
 // Handle the IHT progressive disclosure open/close functionality
 // =====================================================
  $("#getHelpDisclosure").one("click", function() {
-    console.log("in here but ajax not working");
         $.ajax({url: reportProblemAjaxUrl, success: function(result){
-        console.log("extra check");
-             $("#getHelpForm").html(result);
           }});
     });
 
