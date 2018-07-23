@@ -103,18 +103,20 @@ if($('[data-enhanced-select]').length > 0){
  $("#getHelpDisclosure").one("click", function() {
  console.log("click")
         $.ajax({url: reportProblemAjaxUrl, success: function(result){
+        $("#hope").click();
+        console.log("hope work?");
          $("#getHelpForm").html(result);
           }});
     });
-//
-//
-// $(".report-error__toggle").on("click", function(e) {
-//    if (document.getElementById("getHelpDisclosure").open) {
-//            document.getElementById("getHelpDisclosure").open = false;
-//     }else{
-//            document.getElementById("getHelpDisclosure").open = true;
-//         }
-//     });
+
+
+ $(".report-error__toggle").on("click", function(e) {
+    if (document.getElementById("getHelpDisclosure").open) {
+            document.getElementById("getHelpDisclosure").open = false;
+     }else{
+            document.getElementById("getHelpDisclosure").open = true;
+         }
+     });
 
 // =====================================================
 

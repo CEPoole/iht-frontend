@@ -22,9 +22,7 @@
 <script type="text/javascript">var reportProblemAjaxUrl = "@{Html(ApplicationConfig.reportAProblemPartialUrl)}"</script>
 
 <div class="js-hidden">
-    <details class="u-mt--3 u--no-print form-group column-two-thirds">
-        <summary><a class="report-error__toggle" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a></summary>
-    </details>
+    <a id="hope" class="u-mt--3 u--no-print form-group column-two-thirds" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a>
 </div>
 
 <div class="js-visible">
