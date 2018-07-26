@@ -17,16 +17,19 @@
 @import iht.utils.ProgressiveDisclosureHelper._
 @import iht.config.ApplicationConfig
 @import views.html.helper._
-@(location: String)(implicit messages: Messages)
+@(location: String)(implicit request:Request[_], messages: Messages)
 
-<script type="text/javascript">var reportProblemAjaxUrl = "@{Html(ApplicationConfig.reportAProblemPartialUrl)}"</script>
+<script type="text/javascript">
+var reportProblemAjaxUrl = "@{Html(ApplicationConfig.reportAProblemPartialUrl)}"
+var csrfToken = '@{play.filters.csrf.CSRF.getToken(request).map {token => CSRF.formField(request)}}';
+</script>
 
 <div class="js-hidden">
-    <a id="hope" class="u-mt--3 u--no-print form-group column-two-thirds" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a>
+    <a class="u-mt--3 u--no-print form-group column-two-thirds" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a>
 </div>
 
-<div class="js-visible">
-<details id="getHelpDisclosure" class="u-mt--3 u--no-print form-group column-two-thirds">
+<div class="report-error js-visible">
+<details id="get-help-action" class="u-mt--3 u--no-print form-group column-two-thirds">
     <summary>@messages("site.progressiveDisclosure")</summary>
     <div class="panel-indent">
             @if(getDisclosureInfo(location)._2.nonEmpty){
@@ -41,9 +44,7 @@
                 </div>
             }
 
-        <div id="getHelpForm"></div>
-
-        <div id="report-error-partial-form" class="report-error__content hidden">
+        <div id="report-error-partial-form" class="report-error__content">
             <div class="report-error__loading"></div>
         </div>
 

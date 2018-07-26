@@ -100,23 +100,27 @@ if($('[data-enhanced-select]').length > 0){
 // =====================================================
 // Handle the IHT progressive disclosure open/close functionality
 // =====================================================
- $("#getHelpDisclosure").one("click", function() {
- console.log("click")
-        $.ajax({url: reportProblemAjaxUrl, success: function(result){
-        $("#hope").click();
-        console.log("hope work?");
-         $("#getHelpForm").html(result);
-          }});
+ $("#get-help-action").one("click", function() {
+ $.ajax({
+     url: reportProblemAjaxUrl,
+     dataType: 'html',
+     success: function(result){
+     var jqObj = jQuery(result);
+     jqObj.find("input[value='iht']").append(csrfToken);
+     jqObj.find("input[name='isJavascript']").val('true');
+        $("#report-error-partial-form").html(jqObj);
+       }
     });
+ });
 
 
- $(".report-error__toggle").on("click", function(e) {
-    if (document.getElementById("getHelpDisclosure").open) {
-            document.getElementById("getHelpDisclosure").open = false;
-     }else{
-            document.getElementById("getHelpDisclosure").open = true;
-         }
-     });
+// $(".report-error__toggle").on("click", function(e) {
+//    if (document.getElementById("getHelpDisclosure").open) {
+//            document.getElementById("getHelpDisclosure").open = false;
+//     }else{
+//            document.getElementById("getHelpDisclosure").open = true;
+//         }
+//     });
 
 // =====================================================
 
