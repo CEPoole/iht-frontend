@@ -104,7 +104,6 @@ if($('[data-enhanced-select]').length > 0){
     $("#get-help-action").click();
  });
 
-
 // =====================================================
 
 // Submit trigger

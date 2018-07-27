@@ -23,9 +23,7 @@
 var reportProblemAjaxUrl = "@{Html(ApplicationConfig.reportAProblemPartialUrl)}"
 </script>
 
-<div class="js-hidden">
-    <a class="u-mt--3 u--no-print form-group column-two-thirds" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a>
-</div>
+<a class="u-mt--3 u--no-print form-group column-two-thirds js-hidden" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a>
 
 <details id="get-help" class="u-mt--3 u--no-print form-group column-two-thirds js-visible">
     <summary>@messages("site.progressiveDisclosure")</summary>
@@ -47,10 +45,8 @@ var reportProblemAjaxUrl = "@{Html(ApplicationConfig.reportAProblemPartialUrl)}"
                 <div class="report-error__loading"></div>
             </div>
 
-
         <div class="form-group">
             @messages(getDisclosureInfo(location)._1)
         </div>
     </div>
-
 </details>
