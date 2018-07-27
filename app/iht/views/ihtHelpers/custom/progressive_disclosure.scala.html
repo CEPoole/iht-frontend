@@ -21,15 +21,13 @@
 
 <script type="text/javascript">
 var reportProblemAjaxUrl = "@{Html(ApplicationConfig.reportAProblemPartialUrl)}"
-var csrfToken = '@{play.filters.csrf.CSRF.getToken(request).map {token => CSRF.formField(request)}}';
 </script>
 
 <div class="js-hidden">
     <a class="u-mt--3 u--no-print form-group column-two-thirds" href="@ApplicationConfig.reportAProblemNonJSUrl">@messages("site.progressiveDisclosure")</a>
 </div>
 
-<div class="report-error js-visible">
-<details id="get-help-action" class="u-mt--3 u--no-print form-group column-two-thirds">
+<details id="get-help" class="u-mt--3 u--no-print form-group column-two-thirds js-visible">
     <summary>@messages("site.progressiveDisclosure")</summary>
     <div class="panel-indent">
             @if(getDisclosureInfo(location)._2.nonEmpty){
@@ -44,10 +42,11 @@ var csrfToken = '@{play.filters.csrf.CSRF.getToken(request).map {token => CSRF.f
                 </div>
             }
 
+            <a class="report-error__toggle" id="get-help-action" href="form-label" hidden></a>
+            <div id="report-error-partial-form" class="report-error__content hidden">
+                <div class="report-error__loading"></div>
+            </div>
 
-        <div id="report-error-partial-form" class="report-error__content">
-            <div class="report-error__loading"></div>
-        </div>
 
         <div class="form-group">
             @messages(getDisclosureInfo(location)._1)
@@ -55,4 +54,3 @@ var csrfToken = '@{play.filters.csrf.CSRF.getToken(request).map {token => CSRF.f
     </div>
 
 </details>
-</div>
