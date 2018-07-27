@@ -108,19 +108,17 @@ if($('[data-enhanced-select]').length > 0){
      var jqObj = jQuery(result);
      jqObj.find("input[value='iht']").append(csrfToken);
      jqObj.find("input[name='isJavascript']").val('true');
-        $("#report-error-partial-form").html(jqObj);
+        $("#report-error-partial-form").html(jqObj)
        }
     });
  });
 
 
-// $(".report-error__toggle").on("click", function(e) {
-//    if (document.getElementById("getHelpDisclosure").open) {
-//            document.getElementById("getHelpDisclosure").open = false;
-//     }else{
-//            document.getElementById("getHelpDisclosure").open = true;
-//         }
-//     });
+// $("#get-help-action").one("click", function() {
+//        $("#report-error-partial-form").load(reportProblemAjaxUrl, function(response , status, xhrC) {
+//        });
+//       });
+
 
 // =====================================================
 
